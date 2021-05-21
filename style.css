@@ -70,6 +70,12 @@ form input{
     cursor: pointer;
 }
 
+.submit:hover, .edit:hover{
+    background-color: #4888b6;
+    color: #fff;
+    transition: all 0.3s;
+}
+
 .item-collection{
     display: flex;
     justify-content: space-between;
