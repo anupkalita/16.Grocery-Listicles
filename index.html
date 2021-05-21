@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Listicles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main class="container">
+        <div class="alert">
+            <div class="empty unshow">Please add value</div>
+            <div class="add-item unshow">Item is added</div>
+            <div class="editted unshow">Item is editted</div>
+            <div class="removed unshow">Item is removed</div>
+        </div>
+        <h1>Grocery Listicle</h1>
+
+        <form id="add-form">
+            <div class="form-items">
+                <input type="text" name="input-item" id="input-item" placeholder="e.g. eggs">
+                <input type="submit" value="Submit" class="submit">
+            </div>
+        </form>
+
+        <form id="edit-form" class="unshow">
+            <div class="form-items">
+                <input type="text" name="input-item" class="edit-item" placeholder="e.g. eggs">
+                <input type="submit" value="Edit" class="edit">
+            </div>
+        </form>
+
+        <ul class="list-collection">
+            <!-- <li class="item-collection">1 <span><i class="far fa-edit"></i><i class="fas fa-trash"></i></span>
+            </li>
+            <li class="item-collection">2 <span><i class="far fa-edit"></i><i class="fas fa-trash"></i></li> -->
+        </ul>
+    </main>
+
+    <script src="https://kit.fontawesome.com/a4d05c5536.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
