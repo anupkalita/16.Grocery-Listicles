@@ -111,7 +111,7 @@ form input{
     display: block;
 }
 
-.add-item, .editted, .removed, .empty{
+.add-item, .editted, .removed, .empty, .removed-all{
     text-align: center;
     border-radius: 5px;
 
@@ -137,8 +137,25 @@ form input{
     color: #276ea0;
 }
 
+.removed-all{
+    background-color: #c06363ab;
+    color: #722222;
+}
+
 .alert{
     height: 2rem;
+}
+
+.clear{
+    text-align: center;
+}
+
+.clear a{
+    color: #331818;
+    text-decoration: none;
+    background-color: #ceabab;
+    padding: 0.1rem 1rem;
+    border-radius: 5px;
 }
 
 /* Media Queries */
