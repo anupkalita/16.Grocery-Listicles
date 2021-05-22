@@ -24,7 +24,7 @@ function display() {
     // To show the groecery list deleted msg if items are present in the local storage else unshow
     if ((JSON.parse(localStorage.getItem("grocery"))) === null || (JSON.parse(localStorage.getItem("grocery"))).length === 0) {
         clear.classList.add('unshow');
-        return
+        return;
     }
     else {
         clear.classList.remove('unshow');
@@ -122,9 +122,6 @@ function remove_edit(e) {
                     // To display removed all alert msg
                     alert("removed-all");
                 }
-
-                // To display the updated list items into the DOM
-                display();
             }
         });
     }
@@ -154,14 +151,15 @@ function remove_edit(e) {
                     // To display the editted msg
                     alert("editted");
 
-                    // To display the updated list items into the DOM
-                    display();
                 }
             })
             e.preventDefault();
 
         });
     }
+
+    // To display the updated list items into the DOM
+    display();
 }
 
 // To remove all the grocery items from local storage
