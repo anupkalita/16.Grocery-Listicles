@@ -119,7 +119,6 @@ function remove_edit(e) {
                     alert("removed");
                 }
                 else {
-                    clear.classList.add('unshow');
                     // To display removed all alert msg
                     alert("removed-all");
                 }
