@@ -10,6 +10,7 @@ const clear = document.querySelector('.clear');
 let grocery;
 // stores parsed grocery array
 let items;
+let flag = 0;
 
 // event listeners
 window.addEventListener('DOMContentLoaded', display);
@@ -32,7 +33,7 @@ function display() {
         // To retrive item from local storage and send to add() function
         let arr = JSON.parse(localStorage.getItem("grocery"));
         arr.forEach(function (item) {
-        add(item);
+            add(item);
         });
     }
 
@@ -50,22 +51,32 @@ function addToStorage(e) {
             grocery.push(inputItem.value.charAt(0).toUpperCase() + inputItem.value.slice(1));
             groceryJson = JSON.stringify(grocery);
             localStorage.setItem("grocery", groceryJson);
+
+            // To display add-item alert msg
+            alert("add-item");
         }
         // If grocery array is not null, add items into it
         else {
-            let arr = JSON.parse(localStorage.getItem("grocery"));
-            arr.push(inputItem.value.charAt(0).toUpperCase() + inputItem.value.slice(1));
-            groceryJson = JSON.stringify(arr);
-            localStorage.setItem("grocery", groceryJson);
+            // to check if the inputItem.value is present in the grocery array
+            if (checkItemIsPresent(inputItem.value) !== true) {
+                let arr = JSON.parse(localStorage.getItem("grocery"));
+                arr.push(inputItem.value.charAt(0).toUpperCase() + inputItem.value.slice(1));
+                groceryJson = JSON.stringify(arr);
+                localStorage.setItem("grocery", groceryJson);
+
+                // To display add-item alert msg
+                alert("add-item");
+            }
+            else {
+                // To display item-present alert msg
+                alert("item-present");
+            }
         }
 
         // To clear the input field after the value is added
         inputItem.value = "";
 
-        // To display add-item alert msg
-        alert("add-item");
     }
-
     // If the input value is empty
     else if (inputItem.value === "") {
 
@@ -119,6 +130,7 @@ function remove_edit(e) {
                     alert("removed");
                 }
                 else {
+                    removeAll();
                     // To display removed all alert msg
                     alert("removed-all");
                 }
@@ -141,23 +153,31 @@ function remove_edit(e) {
         items = JSON.parse(localStorage.getItem("grocery"));
         editItem.value = val;
         editForm.addEventListener('submit', function (e) {
-            items.forEach(function (item, index) {
-                if (item === val) {
-                    // if selected value that is to be removed matches the item from the grocery array
-                    items.splice(index, 1, editItem.value.charAt(0).toUpperCase() + editItem.value.slice(1));
-                    localStorage.setItem("grocery", JSON.stringify(items));
+            
+            // to check if the editItem.value is present in the grocery array
+            if (checkItemIsPresent(editItem.value) !== true) {
+                items.forEach(function (item, index) {
+                    if (item === val) {
+                        // if selected value that is to be removed matches the item from the grocery array
+                        items.splice(index, 1, editItem.value.charAt(0).toUpperCase() + editItem.value.slice(1));
+                        localStorage.setItem("grocery", JSON.stringify(items));
 
-                    // Toggle the editForm and addForm
-                    editForm.classList.remove('show');
-                    addForm.classList.remove('unshow');
+                        // Toggle the editForm and addForm
+                        editForm.classList.remove('show');
+                        addForm.classList.remove('unshow');
 
-                    // To display the editted msg
-                    alert("editted");
+                        // To display the editted msg
+                        alert("editted");
 
-                    // To display the updated list items into the DOM
-                    display();
-                }
-            })
+                        // To display the updated list items into the DOM
+                        display();
+                    }
+                })
+            }
+            else {
+                // To display item-present alert msg
+                alert("item-present");
+            }
             e.preventDefault();
 
         });
@@ -181,4 +201,16 @@ function alert(cssClass) {
     setTimeout(function () {
         document.querySelector('.' + cssClass).classList.remove('show');
     }, 1000)
+}
+
+// Check if item is present in the grocery array
+function checkItemIsPresent(value) {
+    value = (value.charAt(0).toUpperCase() + value.slice(1));
+
+    let arr = JSON.parse(localStorage.getItem("grocery"));
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === value) {
+            return true;
+        }
+    }
 }

@@ -58,7 +58,7 @@ form input{
     border-bottom-left-radius: 5px;
 }
 
-.submit, .edit{
+.submit{
     flex: 1;
     background-color: #79bbeb;
     border: none;
@@ -70,8 +70,26 @@ form input{
     cursor: pointer;
 }
 
-.submit:hover, .edit:hover{
+.edit{
+    flex: 1;
+    background-color: #90e297;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+.submit:hover{
     background-color: #4888b6;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.edit:hover{
+    background-color: #359b3f;
     color: #fff;
     transition: all 0.3s;
 }
@@ -111,7 +129,7 @@ form input{
     display: block;
 }
 
-.add-item, .editted, .removed, .empty, .removed-all{
+.add-item, .editted, .removed, .empty, .removed-all, .item-present{
     text-align: center;
     border-radius: 5px;
 
@@ -138,6 +156,11 @@ form input{
 }
 
 .removed-all{
+    background-color: #c06363ab;
+    color: #722222;
+}
+
+.item-present{
     background-color: #c06363ab;
     color: #722222;
 }
